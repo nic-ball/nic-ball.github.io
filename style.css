@@ -34,8 +34,11 @@ header.startup h1 {
 	font-size: 2rem;
 }
 
-.btn {
+.clear {
 	text-align: -webkit-center;
+}
+
+.btn {
 	font-weight: 700;
 	text-transform: uppercase;
 	border-radius: 300px;
@@ -57,3 +60,4 @@ header.startup h1 {
 	border-width: 5px;
 	cursor: pointer;
 }
+

@@ -35,6 +35,7 @@ header.startup h1 {
 }
 
 .clear {
+	display: block !important;
 	text-align: -webkit-center !important;
 }
 

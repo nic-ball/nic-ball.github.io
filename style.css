@@ -26,7 +26,6 @@ header.startup {
 }
 
 header.startup hr {
-	justify-content: center;
 	margin-top: 200px;
 	margin-bottom: 30px;
 }
@@ -36,6 +35,7 @@ header.startup h1 {
 }
 
 .btn {
+	text-align: -webkit-center;
 	font-weight: 700;
 	text-transform: uppercase;
 	border-radius: 300px;
@@ -56,8 +56,4 @@ header.startup h1 {
 	border-color: #ee4b08;
 	border-width: 5px;
 	cursor: pointer;
-}
-
-#mc_embed_signup form {
-	text-align: center !important;
 }

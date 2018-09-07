@@ -35,7 +35,7 @@ header.startup h1 {
 }
 
 .clear {
-	text-align: -webkit-center;
+	text-align: -webkit-center !important;
 }
 
 .btn {

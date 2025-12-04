@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 const CppDemo = () => {
-    const [inputNum, setInputNum] = useState(10);
+    const [inputNum, setInputNum] = useState(10); // Defaults to 10
     const [result, setResult] = useState(null);
     const [wasmModule, setWasmModule] = useState(null);
     const [timeTaken, setTimeTaken] = useState(null);
@@ -30,6 +30,23 @@ const CppDemo = () => {
         }
     }, []);
 
+    const handleInputChange = (e) => {
+        let val = parseInt(e.target.value);
+
+        if (isNaN(val)) {
+            setInputNum("");
+            return;
+        }
+
+        //Hard Limit: Max 40 to prevent browser freezing
+        if (val > 40) val =40;
+        // Hard Limit: Min 0
+        if (val < 0) val = 0;
+
+        setInputNum(val);
+
+    };
+
     const calculate = () => {
         if (!wasmModule) return;
 
@@ -47,37 +64,40 @@ const CppDemo = () => {
                 ⚡ C++ WebAssembly Power
             </h2>
             <p className="text-gray-300 text-sm mb-4">
-                This calculation runs natively in C++ inside your browser using WebAssembly.
+                Native C++ Fibonacci calculator running in-browser.
             </p>
 
             <div className="flex gap-4 items-center mb-4">
-                <label className="text-sm">Fibonacci Index:</label>
-                <input
-                    type="number"
-                    value={inputNum}
-                    onChange={(e) => 
-                        setInputNum(parseInt(e.target.value))}
-                        className="text-black p-2 rounded w-20"
-                        min="1"
+                <div className="flex flex-col">
+                    <label className="text-xs text-gray-400 mb-1">Index (Max 40)</label>
+                    <input
+                        type="number"
+                        value={inputNum}
+                        onChange={handleInputChange}
+                        placeholder="1-40"
+                        className="text-black p-2 rounded w-24 outline-none focus:ring-2 focus:ring-green-500"
+                        min="0"
                         max="40" // Setting this too high will break the browser
                     />
-                    <button
-                    onClick={calculate}
-                    disabled={!wasmModule}
-                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-bold 
-                    transition disabled:opacity-50"
-                    >
-                        Run C++
-                    </button>
+                </div>
+                <button
+                onClick={calculate}
+                disabled={!wasmModule || inputNum === ""}
+                className="mt-5 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-bold 
+                transition disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    Run C++
+                </button>
+                </div>
+
+                {result !== null && (
+                    <div className="bg-slate-900 p-4 rounded border border-gray-700 animate-pulse-once">
+                        <p className="text-gray-400 text-sm">Fibonacci({inputNum}) =</p>
+                        <p>Result: <span className="text-green-400 font-mono text-xl">{result}</span></p>
+
+                        <p className="text-xs text-gray-400 mt-1">Time: {timeTaken}ms</p>
                     </div>
-
-                    {result !== null && (
-                        <div className="bg-slate-900 p-4 rounded border border-gray-700">
-                            <p>Result: <span className="text-green-400 font-mono text-xl">{result}</span></p>
-
-                            <p className="text-xs text-gray-400 mt-1">Computation Time: {timeTaken}ms</p>
-                        </div>
-                    )}
+                )}
             </div>
     );
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getProjects } from './services/api'
+import CppDemo from './components/CppDemo'
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -28,6 +29,10 @@ function App() {
           My Projects
         </h1>
 
+        <div className="mb-10">
+          <CppDemo />
+        </div>
+        
         <div classname="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map(project => (
             <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden

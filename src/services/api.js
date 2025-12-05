@@ -20,4 +20,13 @@ export const getProjects = () => {
     });
 };
 
+export const sendContactMessage = (messageData) => {
+    return api-postMessage('contact/', messageData)
+    .then(response => response.data)
+    .catch(error => {
+        console.error("Error sending message:", error);
+        throw error;
+    });
+};
+
 export default api;

@@ -38,10 +38,10 @@ function App() {
 
         {/* Projects Section */}
         <section>
-          <h2 classname="text-3xl font-bold text-gray-800 mb-6">Latest Projects</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Latest Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map(project => (
-            <div key={project.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+            <div key={project.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col mt-8">
             <div className="h-48 bg-slate-200 overflow-hidden relative">
               <img
               src={project.image_url || 'https://via.placeholder.com/400x300'}
@@ -52,7 +52,7 @@ function App() {
 
             <div className="p-6 flex flex-col flex-grow">
               <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
-              <p classname="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
+              <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
                 {project.description}
               </p>
               <div className="mb-4">
@@ -74,20 +74,20 @@ function App() {
         </section>
 
         {/* Interactive Section */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gaps-8 items-start">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
           {/* LEFT COLUMN: C++ Demo */}
-          <div>
-            <h2 classname="text-2-xl font-bold text-gray-800 mb-4">Interactive Demo</h2>
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2-xl font-bold text-gray-800 mb-4">Interactive Demo</h2>
             <div className="w-full">
               <CppDemo />
             </div>
           </div>
 
           {/* RIGHT COLUMN: Contact Form */}
-          <div>
-            <h2 classname="text-2-xl font-bold text-gray-800 mb-4">Contact Me</h2>
-            <div classname="w-full">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2-xl font-bold text-gray-800 mb-4">Contact Me</h2>
+            <div className="w-full">
               <ContactForm />
             </div>
           </div>

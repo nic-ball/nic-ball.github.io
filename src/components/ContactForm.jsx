@@ -26,12 +26,13 @@ const ContactForm = () => {
             setStatus('success');
             setFormData({ name: '', email: '', message: '' })  // Clears form on success
         } catch (error) {
+            console.error("FULL ERROR DETAILS:", error);
             setStatus('error');
         }
     };
 
     return (
-        <section className="bg-white p-8 rounded-lg shadow-md max-w-2xl mx-auto mt-12">
+        <section className="bg-white p-6 rounded-lg shadow-md w-full mt-8">
             <h2 className="text-3xl font-bold tect-gray-800 mb-6 text-center">Get in touch</h2>
 
             {status === 'success' ? (
@@ -88,7 +89,7 @@ const ContactForm = () => {
 
                     {status === 'error' && (
                         <div className="text-red-500 text-sm text-center">
-                            Failed to send mesage. Please try again.
+                            Failed to send message. Please try again.
                         </div>
                     )}
 
@@ -98,7 +99,7 @@ const ContactForm = () => {
                     className={`w-full py-3 px-4 rounded font-bold text-white transition
                         ${status === 'submitting'
                             ? 'bg-gray-400 cursor-not-allowed'
-                            : 'bg-blue-600 hover:bg-blue-700'}`
+                            : 'bg-slate-800 hover:bg-slate-700'}`
                         }
                     >
                         {status === 'submitting' ? 'Sending...' : 'Send Message'}

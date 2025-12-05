@@ -59,7 +59,7 @@ const CppDemo = () => {
     };
 
     return (
-        <div className="bg-slate-800 text-white p-6 rounded-lg shadow-xl mt-8 max-w-md">
+        <div className="bg-slate-800 text-white p-6 rounded-lg shadow-xl mt-8 w-full overflow-hidden">
             <h2 className="text-2-xl font-bold mb-4 border-b border-gray-600 pb-2">
                 ⚡ C++ WebAssembly Power
             </h2>

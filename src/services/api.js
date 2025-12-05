@@ -21,7 +21,7 @@ export const getProjects = () => {
 };
 
 export const sendContactMessage = (messageData) => {
-    return api-postMessage('contact/', messageData)
+    return api.post('contact/', messageData)
     .then(response => response.data)
     .catch(error => {
         console.error("Error sending message:", error);
